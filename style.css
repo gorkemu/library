@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root {
-  --light-shade-yellow: #F4F1EA;
-  --black-text: #181818;
-  --gray-text: #999999;
-  --brown-title: #382110;
+  --blackish: #181818;
+  --brownish: #382110;
+  --grayish: #999999;
+  --greenish: #04AA6D;
+  --reddish: #ff0021;
+  --light-beige: #F4F1EA;
   --light-gray: #eee;
 }
 
@@ -16,8 +18,25 @@
   padding: 0;
 }
 
+html,
+body {
+  width: 100%;
+}
+
 body {
   font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header {
@@ -25,9 +44,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--light-shade-yellow);
-  color: var(--brown-title);
+  background-color: var(--light-beige);
+  color: var(--brownish);
   height: 100px;
+  width: 100%;
   box-shadow: 1px 2px rgb(0 0 0 / 15%);
 }
 
@@ -44,59 +64,60 @@ body {
   height: 60px;
   font-size: 24px;
   border-radius: 8px;
-  background-color: var(--brown-title);
+  background-color: var(--brownish);
   color: #FFFFFF;
   cursor: pointer;
 }
 
 #form-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 30%;
   width: 400px;
-  color: var(--brown-title);
-  background-color: var(--light-shade-yellow);
+  color: var(--brownish);
+  background-color: var(--light-beige);
   font-size: 20px;
 }
 
 .close {
-  color: var(--gray-text);
+  color: var(--grayish);
   position: absolute;
   right: 0.5rem;
   top: 0;
   cursor: pointer;
 }
 
-#pages, #read {
+#pages,
+#read {
   width: 120px;
 }
 
 .submit {
-  align-self: center;
   cursor: pointer;
+  align-self: center;
 }
 
-.add-book:hover, .btn:hover {
+.add-book:hover,
+.btn:hover {
   opacity: 0.9;
 }
 
 .close:hover {
-  color: black;
+  color: var(--blackish);
 }
 
 form {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 2rem;
   height: 100%;
   font-size: 2rem;
-  border: 1px solid black;
+  border: 1px solid var(--brownish);
   padding: 30px;
 }
 
-.form-input-container input{
-  width: 300px;
+.form-input-container input {
+  width: 96%;
   height: 40px;
   font-size: 16px;
   padding: 4px 8px;
@@ -119,23 +140,23 @@ table {
   text-indent: initial;
   text-align: left;
   border-spacing: 2px;
-  width: 750px;
+  width: 80vw;
 }
 
 thead {
-  border-bottom: 2px solid var(--light-shade-yellow);
+  border-bottom: 2px solid var(--light-beige);
 }
 
 th {
   font-size: 12px;
   border-collapse: separate;
   border-spacing: 2px;
-  padding: 12px 5px 5px 0;
+  padding: 12px 5px 5px 5px;
 }
 
 td {
   font-size: 14px;
-  padding: 12px 5px 5px 0;
+  padding: 12px 5px 5px 5px;
 }
 
 tbody tr {
@@ -170,8 +191,21 @@ th.remove {
   height: 30px;
   font-size: 12px;
   border-radius: 8px;
-  background-color: var(--brown-title);
   color: #FFFFFF;
+  cursor: pointer;
+}
+
+.status-Read {
+  background-color: var(--greenish);
+}
+
+.status-Unread {
+  background-color: var(--reddish);
+}
+
+.remove-btn {
+  background-color: var(--light-beige);
+  color: var(--blackish);
 }
 
 .radio {
@@ -182,4 +216,38 @@ th.remove {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+@media screen and (max-width: 450px) {
+  #form-popup {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  td {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .btn {
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .btn {
+    width: 42px;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width:1000px) and (min-width:450px) {
+  #form-popup {
+    position: absolute;
+    top: 0;
+    width: 80vw;
+    height: 80vh;
+  }
 }
