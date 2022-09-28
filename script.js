@@ -26,7 +26,7 @@ function addBookToLibrary() {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
-  const read = document.querySelector('#read').value;
+  const read = document.querySelector('input[name="read"]:checked').value;
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
   clearForm();
@@ -45,7 +45,7 @@ function displayBooks() {
     <td>${myLibrary[i].title}</td>
     <td>${myLibrary[i].author}</td>
     <td>${myLibrary[i].pages}</td>
-    <td><button class='status-btn btn'>${myLibrary[i].read}</button></td>
+    <td><button class='status-btn btn status-${myLibrary[i].read}'>${myLibrary[i].read}</button></td>
     <td><button class='remove-btn btn'>Remove</button></td>`;
     row.dataset.index = i;
     list.appendChild(row);
@@ -86,8 +86,10 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
     //change read status button display on the table
     if (e.target.textContent === 'Read') {
       e.target.textContent = 'Unread';
+      e.target.classList.replace("status-Read", "status-Unread");
     } else {
       e.target.textContent = 'Read';
+      e.target.classList.replace("status-Unread", "status-Read");
     };
   }
 });
