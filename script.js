@@ -15,12 +15,22 @@ closeFormBtn.addEventListener('click', () => {
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-};
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  changeReadStatus() {
+    if (this.read === 'Read') {
+      this.read = 'Unread';
+    } else {
+      this.read = 'Read';
+    };
+  }
+}
 
 function addBookToLibrary() {
   const title = document.querySelector('#title').value;
@@ -94,17 +104,9 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
   }
 });
 
-Book.prototype.changeReadStatus = function () {
-  if (this.read === 'Read') {
-    this.read = 'Unread';
-  } else {
-    this.read = 'Read';
-  };
-};
-
 function toggleBlurBg() {
   if (blurBg.style.filter == '') {
-      blurBg.style.filter = 'blur(2px)';
+    blurBg.style.filter = 'blur(2px)';
   } else {
     blurBg.style.filter = '';
   }
