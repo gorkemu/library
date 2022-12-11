@@ -46,7 +46,7 @@ body {
   justify-content: center;
   background-color: var(--light-beige);
   color: var(--brownish);
-  height: 100px;
+  height: 12vh;
   width: 100%;
   box-shadow: 1px 2px rgb(0 0 0 / 15%);
 }
@@ -60,9 +60,9 @@ body {
 }
 
 .add-book {
-  width: 180px;
-  height: 60px;
-  font-size: 24px;
+  width: 7rem;
+  height: 2.5rem;
+  font-size: 1rem;
   border-radius: 8px;
   background-color: var(--brownish);
   color: #FFFFFF;
@@ -71,11 +71,10 @@ body {
 
 #form-popup {
   position: absolute;
-  top: 30%;
-  width: 400px;
+  top: 2rem;
+  width: 30vw;
   color: var(--brownish);
   background-color: var(--light-beige);
-  font-size: 20px;
 }
 
 .close {
@@ -84,6 +83,7 @@ body {
   right: 0.5rem;
   top: 0;
   cursor: pointer;
+  font-size: 2rem;
 }
 
 #pages,
@@ -111,14 +111,14 @@ form {
   justify-content: flex-start;
   gap: 2rem;
   height: 100%;
-  font-size: 2rem;
+  font-size: 1rem;
   border: 1px solid var(--brownish);
   padding: 30px;
 }
 
 .form-input-container input {
   width: 96%;
-  height: 40px;
+  height: 2rem;
   font-size: 16px;
   padding: 4px 8px;
 }

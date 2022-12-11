@@ -52,8 +52,6 @@ function addBookToLibrary() {
 function displayBooks() {
   const list = document.querySelector("#book-list");
   list.textContent = "";
-  const table = document.querySelector('table');
-  table.style.visibility = 'visible';
 
   for (let i = 0; i < myLibrary.length; i++) {
     const row = document.createElement("tr");
