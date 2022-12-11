@@ -98,7 +98,7 @@ body {
 
 .add-book:hover,
 .btn:hover {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 .close:hover {
@@ -123,8 +123,9 @@ form {
   padding: 4px 8px;
 }
 
-form input[type='radio'] {
+form input[type='checkbox'] {
   height: 20px;
+  cursor: pointer;
 }
 
 .form-input-container {
@@ -195,27 +196,34 @@ th.remove {
   cursor: pointer;
 }
 
-.status-Read {
-  background-color: var(--greenish);
+.status-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.status-Unread {
-  background-color: var(--reddish);
+.fa-toggle-on {
+  color: var(--greenish);
 }
 
-.remove-btn {
-  background-color: var(--light-beige);
-  color: var(--blackish);
+.fa-toggle-off {
+  color: var(--reddish);
 }
 
-.radio {
-  display: flex;
+.fa-trash-can {
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-.radio-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.fa-trash-can:hover {
+  color: var(--reddish);
+}
+
+tr .fa-trash-can {
+  visibility: hidden;
+}
+
+tr:hover .fa-trash-can{
+  visibility: visible;
 }
 
 @media screen and (max-width: 450px) {
