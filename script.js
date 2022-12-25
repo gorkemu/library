@@ -4,14 +4,18 @@ const closeFormBtn = document.querySelector(".close");
 const blurBg = document.querySelector(".blur");
 const bookList = document.querySelector("#book-list");
 
+const titleText = document.getElementById("title");
+const titleError = document.querySelector(".title-error");
+
 addBookBtn.addEventListener("click", () => {
   form.style.display = "";
   toggleBlurBg();
-  const titleField = document.querySelector('#title');
+  const titleField = document.querySelector("#title");
   titleField.focus();
 });
 
 closeFormBtn.addEventListener("click", () => {
+  document.querySelector("form").reset();
   form.style.display = "none";
   toggleBlurBg();
 });
@@ -39,7 +43,7 @@ function addBookToLibrary() {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
-  const checkbox = document.querySelector('#read');
+  const checkbox = document.querySelector("#read");
   const read = checkbox.checked ? "read" : "unread";
 
   const newBook = new Book(title, author, pages, read);
@@ -77,14 +81,41 @@ function displayBooks() {
   }
 }
 
-document.querySelector("#form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  addBookToLibrary();
-  toggleBlurBg();
+titleText.addEventListener("focusout", (e) => {
+  if (titleText.validity.valid) {
+    titleError.textContent = "";
+  } else {
+    showError();
+  }
 });
 
+titleText.addEventListener("focus", (e) => {
+  titleError.textContent = "";
+  titleError.style.display = "block";
+});
+
+document.querySelector("#form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!titleText.validity.valid) {
+    showError();
+  } else {
+    addBookToLibrary();
+    toggleBlurBg();
+  }
+});
+
+function showError() {
+  if (titleText.validity.valueMissing) {
+    titleError.textContent = "You should enter the title";
+  } else if (titleText.validity.tooShort) {
+    titleError.textContent = "Title should contain at least 2 characters";
+  }
+
+  titleError.style.display = "block";
+}
+
 function clearForm() {
-  document.getElementById("form").reset()
+  document.getElementById("form").reset();
 }
 
 function removeBook(el) {
@@ -115,7 +146,7 @@ bookList.addEventListener("click", (e) => {
       e.target.classList.remove("fa-toggle-off");
       e.target.classList.add("fa-toggle-on");
     }
-  displayBooks();
+    displayBooks();
   }
 });
 

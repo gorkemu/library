@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 :root {
   --blackish: #181818;
   --brownish: #382110;
   --grayish: #999999;
-  --greenish: #04AA6D;
+  --greenish: #04aa6d;
   --reddish: #ff0021;
-  --light-beige: #F4F1EA;
+  --light-beige: #f4f1ea;
   --light-gray: #eee;
 }
 
@@ -65,7 +65,7 @@ body {
   font-size: 1rem;
   border-radius: 8px;
   background-color: var(--brownish);
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -123,8 +123,13 @@ form {
   padding: 4px 8px;
 }
 
-form input[type='checkbox'] {
-  height: 20px;
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+form input[type="checkbox"] {
+  height: 18px;
   cursor: pointer;
 }
 
@@ -132,6 +137,12 @@ form input[type='checkbox'] {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.title-error {
+  display: none;
+  color: red;
+  font-size: 90%;
 }
 
 table {
@@ -192,7 +203,7 @@ th.remove {
   height: 30px;
   font-size: 12px;
   border-radius: 8px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -222,7 +233,7 @@ tr .fa-trash-can {
   visibility: hidden;
 }
 
-tr:hover .fa-trash-can{
+tr:hover .fa-trash-can {
   visibility: visible;
 }
 
@@ -251,7 +262,7 @@ tr:hover .fa-trash-can{
   }
 }
 
-@media screen and (max-width:1000px) and (min-width:450px) {
+@media screen and (max-width: 1000px) and (min-width: 450px) {
   #form-popup {
     position: absolute;
     top: 0;
