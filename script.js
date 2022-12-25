@@ -133,6 +133,8 @@ function showPagesError() {
   if (pagesText.validity.patternMismatch) {
     pagesError.textContent = "Must be at least 10 and a valid number";
   }
+
+  pagesError.style.display = "block";
 }
 
 closeFormBtn.addEventListener("mousedown", () => {
