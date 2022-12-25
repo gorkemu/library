@@ -16,6 +16,7 @@ addBookBtn.addEventListener("click", () => {
 
 closeFormBtn.addEventListener("click", () => {
   document.querySelector("form").reset();
+  titleError.style.display = "none";
   form.style.display = "none";
   toggleBlurBg();
 });
