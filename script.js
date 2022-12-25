@@ -132,6 +132,8 @@ function showTitleError() {
 function showPagesError() {
   if (pagesText.validity.patternMismatch) {
     pagesError.textContent = "Must be at least 10 and a valid number";
+  } else if (pagesText.validity.valueMissing) {
+    pagesError.textContent = "You should enter the page number";
   }
 
   pagesError.style.display = "block";
