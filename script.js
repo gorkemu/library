@@ -7,18 +7,14 @@ const bookList = document.querySelector("#book-list");
 const titleText = document.getElementById("title");
 const titleError = document.querySelector(".title-error");
 
+const pagesText = document.getElementById("pages");
+const pagesError = document.querySelector(".pages-error");
+
 addBookBtn.addEventListener("click", () => {
   form.style.display = "";
   toggleBlurBg();
   const titleField = document.querySelector("#title");
   titleField.focus();
-});
-
-closeFormBtn.addEventListener("click", () => {
-  document.querySelector("form").reset();
-  titleError.style.display = "none";
-  form.style.display = "none";
-  toggleBlurBg();
 });
 
 let myLibrary = [];
@@ -86,7 +82,15 @@ titleText.addEventListener("focusout", (e) => {
   if (titleText.validity.valid) {
     titleError.textContent = "";
   } else {
-    showError();
+    showTitleError();
+  }
+});
+
+pagesText.addEventListener("focusout", (e) => {
+  if (pagesText.validity.valid) {
+    pagesError.textContent = "";
+  } else {
+    showPagesError();
   }
 });
 
@@ -95,25 +99,48 @@ titleText.addEventListener("focus", (e) => {
   titleError.style.display = "block";
 });
 
+pagesText.addEventListener("focus", (e) => {
+  pagesError.textContent = "";
+  pagesError.style.display = "block";
+});
+
 document.querySelector("#form").addEventListener("submit", (e) => {
   e.preventDefault();
-  if (!titleText.validity.valid) {
-    showError();
+  if (!titleText.validity.valid || !pagesText.validity.valid) {
+    if (!titleText.validity.valid) {
+      showTitleError();
+    }
+    if (!pagesText.validity.valid) {
+      showPagesError();
+    }
   } else {
     addBookToLibrary();
     toggleBlurBg();
   }
 });
 
-function showError() {
+function showTitleError() {
   if (titleText.validity.valueMissing) {
     titleError.textContent = "You should enter the title";
   } else if (titleText.validity.tooShort) {
-    titleError.textContent = "Title should contain at least 2 characters";
+    titleError.textContent = "Must contain at least 2 characters";
   }
 
   titleError.style.display = "block";
 }
+
+function showPagesError() {
+  if (pagesText.validity.patternMismatch) {
+    pagesError.textContent = "Must be at least 10 and a valid number";
+  }
+}
+
+closeFormBtn.addEventListener("mousedown", () => {
+  document.querySelector("form").reset();
+  titleError.style.display = "none";
+  form.style.display = "none";
+  toggleBlurBg();
+});
 
 function clearForm() {
   document.getElementById("form").reset();

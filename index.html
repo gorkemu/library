@@ -55,11 +55,12 @@
         </div>
         <div class="form-input-container">
           <label for="pages">Pages</label>
-          <input type="text" id="pages" name="pages" />
+          <input type="text" id="pages" name="pages" pattern="^[1-9][0-9]+" />
+          <span class="pages-error error"></span>
         </div>
         <div class="checkbox-container">
           <label for="read">Have you read it?</label>
-          <input type="checkbox" name="read" id="read" value="read" />
+          <input type="checkbox" name="read" id="read" value="read" step="1" />
         </div>
         <button class="submit add-book">Add Book</button>
       </form>

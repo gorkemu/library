@@ -139,7 +139,7 @@ form input[type="checkbox"] {
   gap: 0.5rem;
 }
 
-.title-error {
+.error {
   display: none;
   color: red;
   font-size: 90%;
