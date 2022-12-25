@@ -140,8 +140,9 @@ function showPagesError() {
 }
 
 closeFormBtn.addEventListener("mousedown", () => {
-  document.querySelector("form").reset();
   titleError.style.display = "none";
+  pagesError.style.display = "none";
+  document.querySelector("form").reset();
   form.style.display = "none";
   toggleBlurBg();
 });
